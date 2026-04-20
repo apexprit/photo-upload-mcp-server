@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mcp-server
+    runtime: docker
+    region: oregon  # or any preferred region
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: GOOGLE_CLOUD_PROJECT_ID
+        value: drive-454408  # or your project ID
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/google-credentials.json
+    healthCheckPath: /health
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    buildCommand: ""
+    startCommand: ""
