@@ -3,7 +3,7 @@ services:
     name: mcp-server
     runtime: docker
     repo: https://github.com/apexprit/photo-upload-mcp-server
-    branch: main
+    branch: master
     region: oregon  # or any preferred region
     plan: free
     envVars:
