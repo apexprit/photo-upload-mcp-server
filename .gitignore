@@ -47,3 +47,4 @@ Thumbs.db
 
 # Docker - we need Dockerfile, so don't ignore it
 .dockerignore
+node_modules
