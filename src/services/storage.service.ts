@@ -57,9 +57,10 @@ export class StorageService {
       });
 
       return signedUrl;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error uploading file to storage:', error);
-      throw new Error(`Failed to upload file: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to upload file: ${errorMessage}`);
     }
   }
 
@@ -87,9 +88,10 @@ export class StorageService {
       });
 
       return url;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error generating presigned URL:', error);
-      throw new Error(`Failed to generate presigned URL: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to generate presigned URL: ${errorMessage}`);
     }
   }
 
@@ -105,9 +107,10 @@ export class StorageService {
       const file = bucket.file(storagePath);
       const [metadata] = await file.getMetadata();
       return metadata;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error getting file metadata from storage:', error);
-      throw new Error(`Failed to get file metadata: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to get file metadata: ${errorMessage}`);
     }
   }
 
@@ -122,9 +125,10 @@ export class StorageService {
     try {
       const file = bucket.file(storagePath);
       await file.delete();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error deleting file from storage:', error);
-      throw new Error(`Failed to delete file: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to delete file: ${errorMessage}`);
     }
   }
 
@@ -148,9 +152,10 @@ export class StorageService {
       });
 
       return url;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error generating download URL:', error);
-      throw new Error(`Failed to generate download URL: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to generate download URL: ${errorMessage}`);
     }
   }
 

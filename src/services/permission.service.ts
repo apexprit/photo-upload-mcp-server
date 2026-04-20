@@ -70,8 +70,8 @@ export class PermissionService {
    */
   private static async validateFileAccess(
     userId: string,
-    fileId: string,
-    action: 'read' | 'write' | 'delete'
+    _fileId: string,
+    _action: 'read' | 'write' | 'delete'
   ): Promise<boolean> {
     // This would typically check Firestore for file permissions
     // For now, return true for all authenticated users
